@@ -21,49 +21,95 @@ my-first-agent/
 │   ├── __init__.py
 │   ├── agent.py          # Core Agent definition, tools, and system prompt
 │   └── fastapiapp.py     # Optional FastAPI integration layer
-├── .env.example          # Environment template
+├── .env.example          # Environment template (safe for Git)
+├── .gitignore            # Excludes secrets & virtual envs
 ├── requirements.txt      # Dependency specification
 └── README.md             # Project documentation
+```
 
-
-## 🚀 Getting Started
-# 1. Prerequisites
-Python 3.10 to 3.13
-
-A Gemini API Key from Google AI Studio
-
-# 2. Setup Virtual EnvironmentBash# Clone the repository
-git clone [https://github.com/your-username/my-first-agent.git](https://github.com/your-username/my-first-agent.git)
-cd my-first-agent
-
-# Create and activate virtual environment
-python -m venv .venv
-
-# Windows (PowerShell)
-.\.venv\Scripts\Activate.ps1
-
-# Linux / macOS
-source .venv/bin/activate
-3. Install DependenciesBashpip install -r requirements.txt
-4. Configure Environment VariablesCreate a .env file in the project root:
-Code snippetGEMINI_API_KEY="your_actual_gemini_api_key_here"
-GOOGLE_GENAI_USE_VERTEXAI="false"
-GOOGLE_GENAI_CLIENT_TRANSPORT="rest"
-💻 Running the AgentTerminal Interactive Mode (CLI)Bashadk run app
-Visual Web Inspector UITo inspect function calling traces, payloads, and tokens visually:Bashadk web app
-Navigate to http://localhost:8000 in your browser.
-
-🛠️ Built WithGoogle Agent Development Kit (ADK)  Google GenAI SDKGemini Flash
-📄 LicenseThis project is licensed under the Apache 2.0 License.
 ---
 
-### Recommended `.gitignore` Check
+## 🚀 Getting Started
 
-Make sure your `.gitignore` includes the following lines before running `git add .` and committing:
+### 1. Prerequisites
 
-```gitignore
-.venv/
-__pycache__/
-*.pyc
-.env
-.adk/
+- Python 3.10 to 3.13
+- A Gemini API Key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+
+### 2. Setup Virtual Environment
+
+```bash
+# Clone the repository
+git clone https://github.com/aadityasharma101107/gemini-aerotime-agent.git
+cd gemini-aerotime-agent
+
+# Create virtual environment
+python -m venv .venv
+
+# Activate on Windows (PowerShell)
+.\.venv\Scripts\Activate.ps1
+
+# Activate on Linux / macOS
+source .venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the project root based on `.env.example`:
+
+```env
+GEMINI_API_KEY="your_actual_gemini_api_key_here"
+GOOGLE_GENAI_USE_VERTEXAI="false"
+GOOGLE_GENAI_CLIENT_TRANSPORT="rest"
+```
+
+---
+
+## 💻 Running the Agent
+
+### Terminal Interactive Mode (CLI)
+
+```bash
+adk run app
+```
+
+### Visual Web Inspector UI
+
+To inspect function calling traces, payloads, and tokens visually:
+
+```bash
+adk web app
+```
+
+Navigate to `http://localhost:8000` in your browser.
+
+---
+
+## 🧪 Example Test Prompts
+
+| Intent | Sample Prompt | Expected Behavior |
+|---|---|---|
+| **Capability Check** | `Hi, what can you do?` | Introduces itself strictly as a weather and time assistant. |
+| **Tool Execution** | `What is the weather in San Francisco?` | Calls `get_weather(location="San Francisco")` and returns conditions. |
+| **Multi-Tool Chaining** | `Give me the time and weather for Delhi.` | Sequentially calls both tools and synthesizes the answer. |
+| **Guardrail Boundary** | `Write a Python script for binary search.` | Refuses off-topic task and reaffirms its weather/time focus. |
+
+---
+
+## 🛠️ Built With
+
+- [Google Agent Development Kit (ADK)](https://github.com/google/adk-python)
+- [Google GenAI SDK](https://github.com/googleapis/python-genai)
+- [Gemini Flash](https://aistudio.google.com/)
+
+---
+
+## 📄 License
+
+This project is licensed under the Apache 2.0 License.
