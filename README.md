@@ -23,15 +23,16 @@ my-first-agent/
 │   └── fastapiapp.py     # Optional FastAPI integration layer
 ├── .env.example          # Environment template
 ├── requirements.txt      # Dependency specification
-└── README.md
+└── README.md             # Project documentation
 
-🚀 Getting Started
-1. Prerequisites
+
+## 🚀 Getting Started
+# 1. Prerequisites
 Python 3.10 to 3.13
 
 A Gemini API Key from Google AI Studio
 
-2. Setup Virtual EnvironmentBash# Clone the repository
+# 2. Setup Virtual EnvironmentBash# Clone the repository
 git clone [https://github.com/your-username/my-first-agent.git](https://github.com/your-username/my-first-agent.git)
 cd my-first-agent
 
